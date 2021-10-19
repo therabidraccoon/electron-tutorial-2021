@@ -19,5 +19,9 @@
   "homepage": "https://github.com/therabidraccoon/electron-tutorial-2021#readme",
   "devDependencies": {
     "electron": "^15.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.6.1"
   }
 }
