@@ -1,0 +1,23 @@
+{
+  "name": "electron-tutorial-2021",
+  "version": "1.0.0",
+  "description": "my 2021 electron tutorial",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/therabidraccoon/electron-tutorial-2021.git"
+  },
+  "author": "Ivan Maltese",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/therabidraccoon/electron-tutorial-2021/issues"
+  },
+  "homepage": "https://github.com/therabidraccoon/electron-tutorial-2021#readme",
+  "devDependencies": {
+    "electron": "^15.2.0"
+  }
+}
