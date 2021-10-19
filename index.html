@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <title>Ciao!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="./style.css" rel="stylesheet" />
+    <title>Ciao SI2001!</title>
   </head>
-  <body>
-    <h1>Ciao SI2001!</h1>
+  <body class="text-center">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="random-text-input" class="form-label"
+                  >Testo per notifica:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="random-text-input"
+                  placeholder="Ciao!"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <button id="btn-notifica" type="button" class="btn btn-primary">
+                Invia Notifica
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+  <script>
+    let ipc = require("electron").ipcRenderer;
+
+    let btn = document.getElementById("btn-notifica");
+    let input = document.getElementById("random-text-input");
+
+    btn.addEventListener("click", () => {
+      ipc.send("my-notification", input.value);
+    });
+  </script>
 </html>
