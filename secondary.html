@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="./style.css" rel="stylesheet" />
+    <title>Ciao SI2001!</title>
+  </head>
+  <body class="bg-transparent">
+    <div
+      class="bg-primary rounded-circle w-100 text-center"
+      style="height: 200px"
+    >
+      <button
+        id="btn-window"
+        type="button"
+        class="btn btn-danger"
+        style="margin-top: 50%"
+      >
+        CHIUDI FINESTRA
+      </button>
+    </div>
+  </body>
+  <script>
+    let ipc = require("electron").ipcRenderer;
+
+    let btn = document.getElementById("btn-window");
+
+    btn.addEventListener("click", () => {
+      ipc.send("close-window");
+    });
+  </script>
+</html>

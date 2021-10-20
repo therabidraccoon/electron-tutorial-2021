@@ -1,5 +1,7 @@
 const { app, ipcMain, BrowserWindow, Notification } = require("electron");
 
+let secondaryWindow;
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
@@ -11,6 +13,23 @@ function createWindow() {
   });
 
   win.loadFile("index.html");
+}
+
+function createSecondaryWindows() {
+  secondaryWindow = new BrowserWindow({
+    width: 200,
+    height: 200,
+    transparent: true,
+    frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
+
+  secondaryWindow.setMenu(null);
+
+  secondaryWindow.loadFile("secondary.html");
 }
 
 app.whenReady().then(() => {
@@ -38,4 +57,15 @@ ipcMain.on("my-notification", (event, notificationBody) => {
     });
     notif.show();
   }
+});
+
+ipcMain.on("open-window", (event, notificationBody) => {
+  if (!secondaryWindow) {
+    createSecondaryWindows();
+  }
+});
+
+ipcMain.on("close-window", (event, notificationBody) => {
+  secondaryWindow.hide();
+  secondaryWindow = null;
 });

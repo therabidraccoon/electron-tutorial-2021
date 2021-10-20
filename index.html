@@ -35,6 +35,9 @@
               <button id="btn-notifica" type="button" class="btn btn-primary">
                 Invia Notifica
               </button>
+              <button id="btn-window" type="button" class="btn btn-info mt-2">
+                Apri Finestra Secondaria
+              </button>
             </div>
           </div>
         </div>
@@ -46,9 +49,14 @@
 
     let btn = document.getElementById("btn-notifica");
     let input = document.getElementById("random-text-input");
+    let btnWindow = document.getElementById("btn-window");
 
     btn.addEventListener("click", () => {
       ipc.send("my-notification", input.value);
+    });
+
+    btnWindow.addEventListener("click", () => {
+      ipc.send("open-window");
     });
   </script>
 </html>
